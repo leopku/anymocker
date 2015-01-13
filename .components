@@ -1,0 +1,9 @@
+---
+:orm: activerecord
+:test: none
+:mock: none
+:script: jquery
+:renderer: slim
+:stylesheet: sass
+:namespace: Anymocker
+:migration_format: number
