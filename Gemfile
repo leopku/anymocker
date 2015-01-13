@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
+# source 'https://rubygems.org'
 
 # Distribute your app as a gem
 # gemspec
@@ -14,6 +15,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
+gem 'bcrypt'
 gem 'sass'
 gem 'slim'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
