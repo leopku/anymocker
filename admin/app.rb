@@ -33,6 +33,8 @@ module Anymocker
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :apis, '/apis'
+      role.project_module :vendors, '/vendors'
       role.project_module :accounts, '/accounts'
     end
 

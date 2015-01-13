@@ -1,0 +1,68 @@
+ul class="nav nav-tabs"
+  li class="active" = link_to tag_icon(:list, pat(:list)), url(:apis, :index)
+  li = link_to tag_icon(:plus, pat(:new)), url(:apis, :new)
+
+div class="tabs-content"
+  table class="table table-striped table-hover table-condensed" id="list"
+    thead
+      tr
+        th class='header list-menu'
+          div class='dropdown'
+            a href='#' class='list-menu-toggle.dropdown-toggle dropdown-toggle' data-toggle='dropdown'
+              = tag_icon :magic
+              span class='caret'
+            ul class='list-menu dropdown-menu' role='dropdown'
+              li class='list-menu-wrapper' = link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              li class='list-menu-wrapper list-menu-wrapper-disabled' = link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              li class='list-menu-divider divider'
+              li class='list-menu-wrapper list-menu-wrapper-disabled'
+                = link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                div class='list-menu-popover-delete-selected popover right'
+                  div class='arrow'
+                  h3 class='popover-title' = pat(:delete_selected_title)
+                  div class='popover-content'
+                    = form_tag url(:apis, :destroy_many), :method => :delete do
+                      = hidden_field_tag :api_ids, :'data-delete-many-ids' => true
+                      = submit_tag  pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      div class='btn btn-default btn-small cancel' = pat(:cancel)
+        th class='header' = mat(:api, :id)
+        th class='header' = mat(:api, :vendor_id)
+        th class='header' = mat(:api, :input_type)
+        th class='header' = mat(:api, :input)
+        th class='header' = mat(:api, :output1_type)
+        th class='header' = mat(:api, :output1)
+        th class='header' = mat(:api, :output2_type)
+        th class='header' = mat(:api, :output2)
+        th class='header' = mat(:api, :created_at)
+        th class='header' = mat(:api, :updated_at)
+        th class='header' = mat(:api, :name)
+        th class='header' = mat(:api, :description)
+        th class='header list-row-action-header'
+
+    tbody
+      -@apis.each do |api|
+        tr class='list-row'
+          td class='list-column list-selectable' = check_box_tag 'api_ids[]', :value => api.id, :class => 'list-selectable-checkbox'
+          td class='list-column' = api.id
+          td class='list-column' = api.vendor_id
+          td class='list-column' = api.input_type
+          td class='list-column' = api.input
+          td class='list-column' = api.output1_type
+          td class='list-column' = api.output1
+          td class='list-column' = api.output2_type
+          td class='list-column' = api.output2
+          td class='list-column' = time_ago_in_words api.created_at
+          td class='list-column' = time_ago_in_words api.updated_at
+          td class='list-column' = api.name
+          td class='list-column' = api.description
+          td class='list-column list-row-action'
+            div class='list-row-action-wrapper'
+              = link_to tag_icon(:edit), :href => url(:apis, :edit, :id => api.id), :rel => :tooltip, :title => "#{pat(:edit)} api", :class => 'list-row-action-wrapper-link'
+              = link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} api", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              div class='popover list-row-action-popover-delete-one left'
+                div class='arrow'
+                h3 class='popover-title' = pat(:delete, :model => "api")
+                div class='popover-content'
+                  = form_tag url(:apis, :destroy, :id => api.id), :method => :delete do
+                    = submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    div class='btn btn-default btn-small cancel' = pat(:cancel)

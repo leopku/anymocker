@@ -21,6 +21,7 @@ gem 'slim'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 gem 'puma'
+gem 'paper_trail', '~> 3.0.6'
 
 # Test requirements
 

@@ -1,0 +1,61 @@
+- error = @api.errors.include?(:vendor_id)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :vendor_id, :class => 'control-label'
+  div class='controls'
+    = f.text_field :vendor_id, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:vendor_id, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:input_type)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :input_type, :class => 'control-label'
+  div class='controls'
+    = f.text_field :input_type, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:input_type, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:input)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :input, :class => 'control-label'
+  div class='controls'
+    = f.text_area :input, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:input, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:output1_type)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :output1_type, :class => 'control-label'
+  div class='controls'
+    = f.text_field :output1_type, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:output1_type, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:output1)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :output1, :class => 'control-label'
+  div class='controls'
+    = f.text_area :output1, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:output1, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:output2_type)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :output2_type, :class => 'control-label'
+  div class='controls'
+    = f.text_field :output2_type, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:output2_type, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:output2)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :output2, :class => 'control-label'
+  div class='controls'
+    = f.text_area :output2, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:output2, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:name)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :name, :class => 'control-label'
+  div class='controls'
+    = f.text_field :name, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @api.errors.include?(:description)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :description, :class => 'control-label'
+  div class='controls'
+    = f.text_area :description, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:apis, :index), :class => 'btn btn-default'
