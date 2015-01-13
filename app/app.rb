@@ -2,10 +2,10 @@ module Anymocker
   class App < Padrino::Application
     register SassInitializer
     use ConnectionPoolManagement
-    register Padrino::Mailer
+    # register Padrino::Mailer
     register Padrino::Helpers
 
-    enable :sessions
+    # enable :sessions
 
     ##
     # Caching support.
@@ -26,6 +26,7 @@ module Anymocker
     # set :cache, Padrino::Cache.new(:Mongo, :backend => mongo_client_instance)
     # set :cache, Padrino::Cache.new(:File, :dir => Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
     #
+    set :cache, Padrino::Cache.new(:LRUHash) # Keeps cached values in memory
 
     ##
     # Application configuration options.
