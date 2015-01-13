@@ -1,0 +1,68 @@
+doctype 5
+html[lang="zh-cn"]
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website."
+    title = @title.present? ? "#{@title} | Any API Mocker" : "Any API Mocker"
+    = stylesheet_link_tag 'pure', 'side-menu', 'application'
+  body
+    #layout
+      a#menuLink.menu-link href="#menu"
+        span
+      #menu
+        .pure-menu.pure-menu-open
+          a.pure-menu-heading href="#"
+            | Company
+          ul
+            li
+              a href="#"
+                | Home
+            li
+              a href="#"
+                | About
+            li.menu-item-divided.pure-menu-selected
+              a href="#"
+                | Services
+            li
+              a href="#"
+                | Contact
+      #main
+        .header
+          h1
+            | Page Title
+          h2
+            | A subtitle for your page goes here
+        .content
+          h2.content-subhead
+            | How to use this layout
+          p
+            |  To use this layout, you can just copy paste the HTML, along with the CSS in 
+            a href="/css/layouts/side-menu.css" alt="Side Menu CSS"
+              | side-menu.css
+            | , and the JavaScript in 
+            a href="/js/ui.js"
+              | ui.js
+            | . The JS file uses vanilla JavaScript to simply toggle an 
+            code
+              | active
+            |  class that makes the menu responsive. 
+          h2.content-subhead
+            | Now Let's Speak Some Latin
+          p
+            |  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          .pure-g
+            .pure-u-1-4
+              img.pure-img-responsive src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake"
+            .pure-u-1-4
+              img.pure-img-responsive src="http://farm3.staticflickr.com/2813/9069585985_80da8db54f.jpg" alt="Train"
+            .pure-u-1-4
+              img.pure-img-responsive src="http://farm6.staticflickr.com/5456/9121446012_c1640e42d0.jpg" alt="T-Shirt Store"
+            .pure-u-1-4
+              img.pure-img-responsive src="http://farm8.staticflickr.com/7357/9086701425_fda3024927.jpg" alt="Mountain"
+          h2.content-subhead
+            | Try Resizing your Browser
+          p
+            |  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+    / script src="js/ui.js"
+    =javascript_include_tag 'jquery', 'jquery-ujs', 'ui', (Padrino.env == :production ? '' : %w[]), :application

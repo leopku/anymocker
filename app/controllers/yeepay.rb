@@ -19,8 +19,10 @@ Anymocker::App.controllers :yeepay do
   #   'Hello world!'
   # end
   
-  post :gateway, map: '/yeepay/:version/member/bha/:name' do
-    
+  get :gateway, map: '/yeepay/:version/member/bha/:name' do
+    @vendor = Vendor.where(name: 'yeepay',version: params[:version]).first
+    @api = @vendor.apis.where(name: 'toRecharge').first
+    render :gateway
   end
 
   post :direct_access do
