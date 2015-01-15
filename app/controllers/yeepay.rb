@@ -1,38 +1,8 @@
 Anymocker::App.controllers :yeepay do
 
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
-
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
-
-  # def prepare_api
-  #   @vendor = Vendor.where(name: 'yeepay',version: params[:version]).first
-  #   @api = @vendor.apis.where(name: params[:name]).first
-  #   @input = @api.input
-  #   @output1 = @api.output1
-  #   @output2 = @api.output2
-  # end
-
-  # get :gateway, map: '/yeepay/:version/member/bha/:name' do
-  #   render :gateway
-  # end
   before do
     @vendor = Vendor.where(name: 'yeepay',version: params[:version]).first
-    @api = @vendor.apis.where(name: params[:name]).first
+    @api = @vendor.apis.where(name: params[:name] || params[:service]).first
     @input = Nokogiri::Slop(params[:req] || @api.input)
     @output1 = Nokogiri::Slop(@api.output1)
     @output2 = Nokogiri::Slop(@api.output2)
@@ -68,12 +38,16 @@ Anymocker::App.controllers :yeepay do
     end
   end
 
+  before :direct_access do
+    # @service =
+  end
+
   post :gateway, map: '/yeepay/:version/member/bha/:name' do
     render :gateway
   end
 
-  post :direct_access do
-
+  post :direct_access, map: '/yeepay/:version/member/bhaexter/bhaController' do
+    @output1.to_s
   end
 
 end
