@@ -2,7 +2,10 @@ Anymocker::App.controllers :yeepay do
 
   before do
     @vendor = Vendor.where(name: 'yeepay',version: params[:version]).first
-    @api = @vendor.apis.where(name: params[:name] || params[:service]).first
+    name = params[:name] || params[:service]
+    logger.info('*'*9)
+    logger.info(name)
+    @api = @vendor.apis.where(name: name).first
     @input = Nokogiri::Slop(params[:req] || @api.input)
     @output1 = Nokogiri::Slop(@api.output1)
     @output2 = Nokogiri::Slop(@api.output2)

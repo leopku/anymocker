@@ -38,7 +38,12 @@ module Anymocker
       role.project_module :accounts, '/accounts'
     end
 
-    # Custom error management 
+    access_control.roles_for :staff do |role|
+      role.project_module :apis, '/apis'
+      role.project_module :vendors, '/vendors'
+    end
+
+    # Custom error management
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
     error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
