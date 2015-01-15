@@ -1,2 +1,51 @@
-div
-  | Haha
+h2.content-subhead
+  = @api.name
+.pure-g
+  .pure-u-sm-24-24
+    form.pure-form.pure-form-stacked method='post'
+      fieldset
+        legend
+          | 请求
+        .pure-control-group
+          button.pure-button type='submit'
+            | 第一步：重发请求
+        .pure-control-group
+          textarea name='req' cols='90' rows='9' placeholder='请求内容'
+            = @input
+
+/ h2.content-subhead
+/   | 回跳
+.pure-g
+  .pure-u-sm-24-24
+    form.pure-form.pure-form-stacked method='post' target='_blank' action="#{@callback_url}"
+      fieldset
+        legend
+          | 回跳
+        .pure-control-group
+          button.pure-button.pure-button-primary type='submit'
+            | 第二步：发送回跳
+          input name='sign' type='hidden' value='winter is comming'
+        .pure-control-group
+          / label
+          /   | 回跳路径
+          = text_field_tag :callback_url, value: @callback_url, class: 'pure-input-2-3', placeholder: '回调路径'
+        .pure-control-group
+          textarea name='req' cols='90' rows='9' placeholder='回跳输出'
+            = @output1
+
+.pure-g
+  .pure-u-sm-24-24
+    form.pure-form.pure-form-stacked method='post' target='_blank' action="#{@notify_url}"
+      fieldset
+        legend
+          | 回调
+        .pure-control-group
+          button.pure-button.pure-button-primary type='submit'
+            | 第三步：发送回调
+        .pure-control-group
+          / label
+          /   | 回调路径
+          = text_field_tag :notify_url, value: @notify_url, class: 'pure-input-2-3', placeholder: '回调路径'
+        .pure-control-group
+          textarea name='req' cols='90' rows='9' placeholder='回调输出'
+            = @output2

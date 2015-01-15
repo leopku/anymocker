@@ -44,7 +44,7 @@ div class="tabs-content"
         tr class='list-row'
           td class='list-column list-selectable' = check_box_tag 'api_ids[]', :value => api.id, :class => 'list-selectable-checkbox'
           td class='list-column' = api.id
-          td class='list-column' = api.vendor_id
+          td class='list-column' = api.vendor.name
           td class='list-column' = api.input_type
           td class='list-column' = api.input
           td class='list-column' = api.output1_type

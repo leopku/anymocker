@@ -26,6 +26,7 @@ Anymocker::Admin.controllers :apis do
 
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "api #{params[:id]}")
+    @vendors = Vendor.all
     @api = Api.find(params[:id])
     if @api
       render 'apis/edit'
@@ -78,9 +79,9 @@ Anymocker::Admin.controllers :apis do
     end
     ids = params[:api_ids].split(',').map(&:strip)
     apis = Api.find(ids)
-    
+
     if Api.destroy apis
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Apis', :ids => "#{ids.to_sentence}")
     end
     redirect url(:apis, :index)

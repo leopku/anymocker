@@ -1,6 +1,16 @@
-/* 
+/*
 * @Author: leo
 * @Date:   2015-01-13 23:54:28
-* @Last Modified by:   leo
-* @Last Modified time: 2015-01-13 23:54:28
+* @Last Modified by:   leopku
+* @Last Modified time: 2015-01-14 13:09:41
 */
+
+body {
+    color: #777;
+    font-size: 1em;
+    font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "冬青黑体", "Microsoft YaHei", "微软雅黑", "WenQuanYi Micro Hei", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+.pure-g {
+    letter-spacing: 0.1em;
+}
