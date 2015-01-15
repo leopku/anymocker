@@ -2,7 +2,7 @@
 fieldset class='control-group#{error ? ' has-error' : ''}'
   = f.label :vendor_id, :class => 'control-label'
   div class='controls'
-    = f.select :vendor, :collection => @vendors, :fields => [:name, :id], :class => 'form-control input-large input-with-feedback', :autofocus => true
+    = f.text_field :vendor_id, :class => 'form-control input-large input-with-feedback', :autofocus => true
     span class='help-inline' = error ? f.error_message_on(:vendor_id, :class => 'text-error') : pat(:example)
 - error = @api.errors.include?(:input_type)
 fieldset class='control-group#{error ? ' has-error' : ''}'
