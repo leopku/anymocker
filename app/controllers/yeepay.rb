@@ -13,9 +13,6 @@ Anymocker::App.controllers :yeepay do
     @platform_no = @input.request.attr('platformNo')
     @output1.response['platformNo'] = @platform_no
     @output2.notify['platformNo'] = @platform_no
-  # end
-
-  # before :gateway do
 
     ['callback_url', 'notify_url'].each do |url|
       begin

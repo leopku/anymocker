@@ -30,7 +30,7 @@ h2.content-subhead
           /   | 回跳路径
           = text_field_tag :callback_url, value: @callback_url, class: 'pure-input-2-3', placeholder: '回调路径'
         .pure-control-group
-          textarea name='req' cols='90' rows='9' placeholder='回跳输出'
+          textarea name='resp' cols='90' rows='9' placeholder='回跳输出'
             = @output1
 
 .pure-g
@@ -42,10 +42,11 @@ h2.content-subhead
         .pure-control-group
           button.pure-button.pure-button-primary type='submit'
             | 第三步：发送回调
+          input name='sign' type='hidden' value='winter is comming'
         .pure-control-group
           / label
           /   | 回调路径
           = text_field_tag :notify_url, value: @notify_url, class: 'pure-input-2-3', placeholder: '回调路径'
         .pure-control-group
-          textarea name='req' cols='90' rows='9' placeholder='回调输出'
+          textarea name='notify' cols='90' rows='9' placeholder='回调输出'
             = @output2
