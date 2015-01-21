@@ -33,3 +33,29 @@
     };
 
 }(this, this.document));
+
+$(function () {
+  $('textarea[data-ace]').each(function () {
+    var textarea = $(this);
+
+    var mode = textarea.data('ace');
+
+    var editorDiv = $('<div>', {
+      position: 'absolute',
+      width: textarea.width(),
+      height: textarea.height(),
+      'class': textarea.attr('class')
+    }).insertBefore(textarea);
+
+    textarea.css('visibility', 'hidden');
+
+    var editor = ace.edit(editorDiv[0]);
+    editor.$blockScrolling = Infinity;
+    editor.getSession().setValue(textarea.val());
+    editor.getSession().setMode('ace/mode/' + mode);
+
+    textarea.closest('form').submit(function  () {
+      textarea.val(editor.getSession().getValue());
+    });
+  });
+})

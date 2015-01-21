@@ -10,7 +10,7 @@ h2.content-subhead
           button.pure-button type='submit'
             | 第一步：重发请求
         .pure-control-group
-          textarea name='req' cols='90' rows='9' placeholder='请求内容'
+          textarea data-ace='xml' name='req' cols='90' rows='9' placeholder='请求内容'
             = @input
 
 / h2.content-subhead
@@ -28,9 +28,9 @@ h2.content-subhead
         .pure-control-group
           / label
           /   | 回跳路径
-          = text_field_tag :callback_url, value: @callback_url, class: 'pure-input-2-3', placeholder: '回调路径'
+          = text_field_tag :callback_url, value: @callback_url, class: 'pure-input-3-3', placeholder: '回调路径'
         .pure-control-group
-          textarea name='resp' cols='90' rows='9' placeholder='回跳输出'
+          textarea data-ace='xml' name='resp' cols='90' rows='9' placeholder='回跳输出'
             = @output1
 
 .pure-g
@@ -46,7 +46,7 @@ h2.content-subhead
         .pure-control-group
           / label
           /   | 回调路径
-          = text_field_tag :notify_url, value: @notify_url, class: 'pure-input-2-3', placeholder: '回调路径'
+          = text_field_tag :notify_url, value: @notify_url, class: 'pure-input-3-3', placeholder: '回调路径'
         .pure-control-group
-          textarea name='notify' cols='90' rows='9' placeholder='回调输出'
+          textarea data-ace='xml' name='notify' cols='90' rows='9' placeholder='回调输出'
             = @output2
