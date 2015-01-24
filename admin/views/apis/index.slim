@@ -27,15 +27,15 @@ div class="tabs-content"
                       div class='btn btn-default btn-small cancel' = pat(:cancel)
         th class='header' = mat(:api, :id)
         th class='header' = mat(:api, :vendor_id)
-        th class='header' = mat(:api, :input_type)
+        th class='header' = mat(:api, :name)
+        / th class='header' = mat(:api, :input_type)
         th class='header' = mat(:api, :input)
-        th class='header' = mat(:api, :output1_type)
+        / th class='header' = mat(:api, :output1_type)
         th class='header' = mat(:api, :output1)
-        th class='header' = mat(:api, :output2_type)
+        / th class='header' = mat(:api, :output2_type)
         th class='header' = mat(:api, :output2)
         th class='header' = mat(:api, :created_at)
         th class='header' = mat(:api, :updated_at)
-        th class='header' = mat(:api, :name)
         th class='header' = mat(:api, :description)
         th class='header list-row-action-header'
 
@@ -44,16 +44,24 @@ div class="tabs-content"
         tr class='list-row'
           td class='list-column list-selectable' = check_box_tag 'api_ids[]', :value => api.id, :class => 'list-selectable-checkbox'
           td class='list-column' = api.id
-          td class='list-column' = api.vendor.name
-          td class='list-column' = api.input_type
-          td class='list-column' = api.input
-          td class='list-column' = api.output1_type
-          td class='list-column' = api.output1
-          td class='list-column' = api.output2_type
-          td class='list-column' = api.output2
+          td class='list-column'
+            span.label.label-default = api.vendor.name
+          td class='list-column'
+            span.label.label-info = api.name
+          / td class='list-column' = api.input_type
+          td class='list-column'
+            span.label.label-primary = api.input_type
+            = api.input
+          / td class='list-column' = api.output1_type
+          td class='list-column'
+            span.label.label-primary = api.output1_type
+            = api.output1
+          / td class='list-column' = api.output2_type
+          td class='list-column'
+            span.label.label-primary = api.output1_type
+            = api.output2
           td class='list-column' = time_ago_in_words api.created_at
           td class='list-column' = time_ago_in_words api.updated_at
-          td class='list-column' = api.name
           td class='list-column' = api.description
           td class='list-column list-row-action'
             div class='list-row-action-wrapper'
